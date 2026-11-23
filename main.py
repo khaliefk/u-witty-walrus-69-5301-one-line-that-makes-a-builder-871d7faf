@@ -14,8 +14,13 @@ ENTRY = (
 
 
 def is_one_sentence(line):
-    body = line.replace("make.fun", "makefun")
-    return body.count(".") == 1 and body.endswith(".")
+    body = line.strip().replace("make.fun", "makefun")
+    return (
+        body.count(".") == 1
+        and body.endswith(".")
+        and "!" not in body
+        and "?" not in body
+    )
 
 
 def main():
